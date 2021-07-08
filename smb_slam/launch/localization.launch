@@ -4,7 +4,7 @@
   <arg name="launch_rviz" 		    default="false"/>
   <arg name="launch_sensors"      default="false"/>
   <arg name="use_lidar_odometry"  default="false"/>
-  <arg name="map_name"            default="Wangen_mapdecimated.pcd" /> 
+  <arg name="map_name"            default="challenge_decimated.pcd" /> 
   <arg name="launch_lidar_odometry"   default="false"/>
 
   <include file="$(find smb)/launch/sensors.launch" if="$(arg launch_sensors)">
@@ -30,7 +30,7 @@
        an extra transformation. Be sure to set the calibration and the topic
        corretly in the icp_localization/config/param.yaml file -->
   <group unless="$(arg use_lidar_odometry)">
-    <node pkg="tf" type="static_transform_publisher" name="odom_source_to_base_link" respawn="true" args="-0.309 -0.008 -0.351 0 0 0 odom_source base_link 100"/>
+    <node pkg="tf" type="static_transform_publisher" name="odom_source_to_base_link" respawn="true" args="-0.309 -0.008 -0.351 0 0 0 odom_source base_link 10"/>
 
     <include file="$(find icp_localization)/launch/icp_node.launch">
       <arg name="launch_rviz" value="$(arg launch_rviz)"/>
